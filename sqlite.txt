@@ -1,0 +1,35 @@
+create table tblUser(
+	Id integer not null primary key autoincrement unique,
+	Name text(20) not null unique
+);
+
+create table tblPet(
+	Id integer not null primary key autoincrement,
+	Name text(50) not null,
+	UserId integer not null,
+	foreign key (UserId) references tblUser(Id) on delete cascade on update cascade,
+	unique (Name, UserId)
+);
+
+insert into tblUser (Name) values 
+	('Andrii'),
+	('Anton'),
+	('Alex'),
+	('Alexandr'),
+	('Alexey');
+
+insert into tblPets (Name, UserId) values
+	('Dog', 1),
+	('Dog', 2),
+	('Cat', 1),
+	('Snake', 2),
+	('Frog', 3),
+	('Crocodyle', 2),
+	('Frog', 1),
+	('Snake', 3),
+	('Dog', 3);
+
+delete from tblUser where Id = 3;
+
+
+
